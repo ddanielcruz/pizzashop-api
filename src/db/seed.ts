@@ -13,6 +13,7 @@ import { db } from './connection'
 import chalk from 'chalk'
 import { orderItems } from './schema/order-items'
 import { createId } from '@paralleldrive/cuid2'
+import { env } from '@/env'
 
 /**
  * Reset database
@@ -55,7 +56,7 @@ const [manager] = await db
   .insert(users)
   .values({
     name: faker.person.fullName(),
-    email: 'diego.schell.f@gmail.com',
+    email: env.RESTAURANT_MANAGER_EMAIL,
     role: 'manager',
   })
   .returning()
